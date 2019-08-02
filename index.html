@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>js</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../js/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../js/layui/css/global.css" media="all">
+  <link rel="stylesheet" href="../js/style/admin.css" media="all">
+  <link rel="stylesheet" href="../js/style/reset.css" media="all">
+  
+  <script>
+  /^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
+  
+  
+  </script>
+</head>
+<body class="layui-layout-body">
+  
+  <div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+      <div class="layui-header">
+       <div class="layui-logo" lay-href="home/console.html" style="background: none !important">
+            <span>logo</span>
+          </div>  
+        <!-- 头部区域 -->
+        <div class="resetHeaderlayuiNav layui-layout-left" lay-filter="side">
+        
+        </div>
+        <ul class="layui-nav layui-layout-right resetHeaderRight" lay-filter="layadmin-layout-right " >
+          <li class="layui-nav-item layadmin-flexible" lay-unselect>
+            <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+              <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+            </a>
+          </li>
+           <li class="layui-nav-item layui-hide-xs" lay-unselect>
+            <a href="http://www.layui.com/admin/" target="_blank" title="前台">
+              <i class="layui-icon layui-icon-website"></i>
+            </a>
+          </li>
+          <li class="layui-nav-item" lay-unselect>
+            <a href="javascript:;" layadmin-event="refresh" title="刷新">
+              <i class="layui-icon layui-icon-refresh-3"></i>
+            </a>
+          </li>
+         <!--  <li class="layui-nav-item layui-hide-xs" lay-unselect>
+            <input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-input-search" layadmin-event="serach" lay-action="template/search.html?keywords="> 
+          </li> -->
+          <li class="layui-nav-item" lay-unselect>
+            <a href="javascript:;">
+              <cite>贤心</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd><a lay-href="set/user/info.html">基本资料</a></dd>
+              <dd><a lay-href="set/user/password.html">修改密码</a></dd>
+              <hr>
+              <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+            </dl>
+          </li>
+          
+          <!-- <li class="layui-nav-item layui-hide-xs" lay-unselect>
+            <a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>
+          </li>
+          <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+            <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+          </li> -->
+        </ul>
+      </div>
+      
+      <!-- 侧边菜单 -->
+      <div class="layui-side layui-side-menu">
+        <div class="layui-side-scroll" id='navLeftList'  lay-filter="sideL">
+         
+        </div>
+      </div>
+      <!-- 侧边栏二级菜单自增 -->
+      <ul id="leftFBar"  lay-filter="sideLtip">
+          <li class="leftFBar_lnav" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+           
+          </li>
+      </ul>
+      <div class="layui-body" style="bottom: 0;border-left: solid 2px #1AA094;" id="admin-body">
+        <div class="layui-tab admin-nav-card layui-tab-brief" lay-filter="admin-tab">
+          <ul class="layui-tab-title">
+            <li class="layui-this">
+              <i class="fa fa-dashboard" aria-hidden="true"></i>
+              <cite>控制面板</cite>
+            </li>
+          </ul>
+          <div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
+            <div class="layui-tab-item layui-show">
+              <iframe src="views/main.html"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 辅助元素，一般用于移动设备下遮罩-->
+      <div class="layadmin-body-shade" layadmin-event="shade"></div>
+    </div>
+  </div>
+
+  <script src="../js/layui/layui.js"></script>
+
+  <script>
+  var nav = 
+  [
+      {
+      "title": "基本元素",
+      "icon": "fa-cubes",
+      "id": 0,
+      "spread": true,
+      "children": [
+            {
+              "title": "按钮",
+              "icon": "&#xe641;",
+              "spread": true,
+              "id": 1
+            }, {
+              "title": "表单",
+              "icon": "&#xe63c;",
+              "spread": true,
+              "id": 2
+            }, {
+              "title": "表格",
+              "icon": "&#xe63c;",
+              "spread": true,
+              "id": 3
+            }, {
+              "title": "导航",
+              "icon": "&#xe609;",
+              "spread": true,
+              "id": 4
+            }, {
+              "title": "辅助性元素",
+              "icon": "&#xe60c;",
+              "spread": true,
+              "id": 5
+            }
+        ]
+      },
+      {
+        "title": "中级元素",
+        "icon": "fa-cubes",
+        "id": 0,
+        "spread": true,
+      }
+  ];
+  var navLeft =
+  [
+    {
+    "title": "按钮",
+    "icon": "&#xe641;",
+    "id": 111,
+    "pid": 1,
+    "spread": false,
+    "children": [
+        {
+          "title": "按钮",
+          "id": 1,
+          "href": "views/button.html"
+        }, {
+          "title": "表单",
+          "id": 2,
+          "href": "views/form.html"
+        }, {
+          "title": "表格",
+          "id": 3,
+          "href": "views/table.html"
+        }, {
+          "title": "导航",
+          "id": 4,
+          "href": "views/nav.html"
+        }, {
+          "title": "辅助性元素",
+          "id": 5,
+          "href": "views/auxiliar.html"
+        }
+    ]
+  }, {
+    "title": "表单",
+    "icon": "&#xe63c;",
+    "id": 112,
+    "pid": 1,
+    "spread": true,
+    "children": [
+        {
+          "title": "表单",
+          "id": 2,
+          "href": "views/form.html"
+        }
+      ]
+  }, {
+    "title": "表格",
+    "icon": "&#xe63c;",
+    "id": 113,
+    "pid": 1,
+    "spread": true,
+    "children": [
+          {
+            "title": "表格",
+            "id": 3,
+            "href": "views/table.html"
+          }
+    ]
+  }, {
+    "title": "导航",
+    "icon": "&#xe609;",
+    "id": 114,
+    "pid": 4,
+    "spread": true,
+    "children": [
+        {
+          "title": "导航",
+          "id": 4,
+          "href": "views/nav.html"
+        }
+    ]
+  }, {
+    "title": "辅助性元素",
+    "icon": "&#xe60c;",
+    "id": 115,
+    "pid": 5,
+    "spread": true,
+    "children": [
+        {
+          "title": "辅助性元素",
+          "id": 5,
+          "href": "views/auxiliar.html"
+        }
+    ]
+  }]
+  //左侧竖导航：模拟数据
+ layui.config({
+    base: 'js/',
+    version: new Date().getTime()
+}).extend({
+    index: 'lib/index' //主入口模块
+  }).use(['element', 'layer', 'navbar', 'tab','index'], function () {
+    var element = layui.element,
+        $ = layui.jquery,
+        layer = layui.layer,
+        navbar = layui.navbar();
+        navbarLeft = layui.navbar();
+        navbarLeftTip = layui.navbar();
+    tab = layui.tab({
+        elem: '.admin-nav-card' //设置选项卡容器
+        ,
+        //maxSetting: {
+        //  max: 5,
+        //  tipMsg: '只能开5个哇，不能再开了。真的。'
+        //},
+        contextMenu: true,
+        onSwitch: function (data) {
+            // console.log(data.id); //当前Tab的Id
+
+            // console.log(data.index); //得到当前Tab的所在下标
+            // console.log(data.elem); //得到当前的Tab大容器
+
+            // console.log(tab.getCurrentTabId())
+        },
+        closeBefore: function (obj) { //tab 关闭之前触发的事件
+            //obj.title  -- 标题
+            //obj.url    -- 链接地址
+            //obj.id     -- id
+            //obj.tabId  -- lay-id
+            if (obj.title === 'BTable') {
+                layer.confirm('确定要关闭' + obj.title + '吗?', { icon: 3, title: '系统提示' }, function (index) {
+                    //因为confirm是非阻塞的，所以这里关闭当前tab需要调用一下deleteTab方法
+                    tab.deleteTab(obj.tabId);
+                    layer.close(index);
+                });
+                //返回true会直接关闭当前tab
+                return false;
+            }else if(obj.title==='表单'){
+                layer.confirm('未保存的数据可能会丢失哦，确定要关闭吗?', { icon: 3, title: '系统提示' }, function (index) {
+                    tab.deleteTab(obj.tabId);
+                    layer.close(index);
+                });
+                return false;
+            }
+            return true;
+        }
+    });
+    //iframe自适应
+    $(window).on('resize', function () {
+        var $content = $('.admin-nav-card .layui-tab-content');
+        $content.height($(this).height() - 147);
+        $content.find('iframe').each(function () {
+            $(this).height($content.height());
+        });
+    }).resize();
+
+    //设置navbar
+    navbar.set({
+        spreadOne: false,
+        elem: '.resetHeaderlayuiNav',
+        cached: true,
+        data: nav
+    /*cached:true,
+    url: 'datas/nav.json'*/
+    });
+    //渲染navbar
+    navbar.render();
+    //监听点击事件
+    navbar.on('click(side)', function (data) {
+      data.mark = '2';
+      var arr = {'json':[]};
+      navLeft.forEach(function(res){
+        if(res.pid === data.field.id){
+          arr.json.push(res);
+        }
+      })
+        navbarLeft.set({
+            spreadOne: true,
+            elem: '#navLeftList',
+            cached: true,
+            data: arr
+        /*cached:true,
+        url: 'datas/nav.json'*/
+        });
+
+        //渲染navbarLeft
+        navbarLeft.render();
+        // tab.tabAdd(arr.field,'to');
+        navbarLeft.on('click(side)', function (re) {
+           tab.tabAdd(re.field,'to');
+        });
+        navbarLeft.on('mouseenter(sideL)', function (re) {
+            if($('.layadmin-side-shrink').length >0 ){
+              var arrtip = {'json':[]};
+                  navLeft.forEach(function(retip){
+                    if(retip.id === re.field.id){
+                      arrtip.json.push(retip);
+                    }
+                  })
+              navbarLeftTip.set({
+                  spreadOne: true,
+                  elem: '#leftFBar',
+                  cached: true,
+                  data: arrtip
+              /*cached:true,
+              url: 'datas/nav.json'*/
+              });
+              navbarLeftTip.render();
+              navbarLeftTip.on('click(sideLtip)', function (re) {
+                 tab.tabAdd(re.field,'to');
+              });
+            }
+              
+        })
+    });
+   
+
+});
+</script>
+</body>
+</html>
+
+

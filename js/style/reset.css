@@ -1,0 +1,103 @@
+/*
+ author:tangkai
+ time:2019/8/1;
+ */
+.layui-layout-admin .layui-side{
+	top:80px !important;
+}
+.layui-layout-admin .layui-header{
+	height: 80px !important;
+
+}
+.layui-layout-admin .layui-logo{
+	height: 59px !important;
+	width: 300px !important;
+	background: none !important;
+	line-height: 59px !important;
+	margin: 10px 0 !important;
+
+}
+.resetHeaderRight{
+	padding: 15px 0px !important;
+	margin-right: 20px !important;
+}
+.layui-layout-admin .layui-body{
+	top:80px !important;
+	bottom:0 !important;
+}
+.layui-layout-admin .layui-header{
+	/*background: #fff*/
+}.layui-layout-admin .layui-logo{
+	background: none !important
+}
+.resetHeaderlayuiNav{
+	height: 80px !important;
+	line-height: 80px !important;
+}
+.layui-layout-left{
+	left: 300px !important;
+}
+#navLeftList{
+
+    background-color: #393D49 !important;
+}
+
+
+
+/* 自增左侧菜单*/
+#leftFBar{
+	width: 220px;
+    height: auto;
+    position: fixed;
+    left: 60px;
+    top: 80px;
+    z-index: 999999;
+    display: none;
+    border-left: 2px solid #1c9389;
+}
+.leftFBar_nav{
+    width: 220px;
+    background: 0 0;
+}
+#leftFBar > li a{
+	display: block;
+	font-size: 14px;
+	font-weight: 400;
+	height: 40px;
+	line-height: 40px;
+	padding-bottom: 8px;
+	padding-left: 45px;
+	padding-right: 30px;
+	padding-top: 8px;
+}
+#leftFBar > li a, #leftFBar > li a:hover{
+
+    color: #fff!important;
+
+}
+#leftFBar > li{
+	color: rgb(255, 255, 255);
+	line-height: 45px;
+}
+#leftFBar > li > dl{
+	left: 0px;
+    line-height: 36px;
+    min-width: 100%;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 5px;
+    position: relative;
+    top: 0;
+    border: 0;
+    background: #111;
+}
+#leftFBar > li > dd{
+	background-color: rgb(0, 150, 136);
+	color: rgb(255, 255, 255);
+	height: 40px;
+	line-height: 36px;
+}
+#leftFBar .layui-nav-child{
+ 	display: block;
+ }
